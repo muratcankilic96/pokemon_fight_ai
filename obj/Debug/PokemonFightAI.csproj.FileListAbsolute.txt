@@ -1,0 +1,21 @@
+C:\Users\MuratPC\source\repos\PokemonFightAI\PokemonFightAI\bin\Debug\Pokemon Fight AI.exe.config
+C:\Users\MuratPC\source\repos\PokemonFightAI\PokemonFightAI\bin\Debug\Pokemon Fight AI.exe
+C:\Users\MuratPC\source\repos\PokemonFightAI\PokemonFightAI\bin\Debug\Pokemon Fight AI.pdb
+C:\Users\MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\PokemonFightAI.csprojResolveAssemblyReference.cache
+C:\Users\MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\PokemonFightAI.MainForm.resources
+C:\Users\MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\PokemonFightAI.Properties.Resources.resources
+C:\Users\MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\PokemonFightAI.csproj.GenerateResource.Cache
+C:\Users\MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\PokemonFightAI.csproj.CoreCompileInputs.cache
+C:\Users\MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\Pokemon Fight AI.exe
+C:\Users\MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\Pokemon Fight AI.pdb
+C:\Users\MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\PokemonFightAI.BattleScene.resources
+E:\Batan Gemi\Documents of MuratPC\source\repos\PokemonFightAI\PokemonFightAI\bin\Debug\Pokemon Fight AI.exe.config
+E:\Batan Gemi\Documents of MuratPC\source\repos\PokemonFightAI\PokemonFightAI\bin\Debug\Pokemon Fight AI.exe
+E:\Batan Gemi\Documents of MuratPC\source\repos\PokemonFightAI\PokemonFightAI\bin\Debug\Pokemon Fight AI.pdb
+E:\Batan Gemi\Documents of MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\PokemonFightAI.BattleScene.resources
+E:\Batan Gemi\Documents of MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\PokemonFightAI.MainForm.resources
+E:\Batan Gemi\Documents of MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\PokemonFightAI.Properties.Resources.resources
+E:\Batan Gemi\Documents of MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\PokemonFightAI.csproj.GenerateResource.cache
+E:\Batan Gemi\Documents of MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\PokemonFightAI.csproj.CoreCompileInputs.cache
+E:\Batan Gemi\Documents of MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\Pokemon Fight AI.exe
+E:\Batan Gemi\Documents of MuratPC\source\repos\PokemonFightAI\PokemonFightAI\obj\Debug\Pokemon Fight AI.pdb

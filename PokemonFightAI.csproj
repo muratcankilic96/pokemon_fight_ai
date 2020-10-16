@@ -1,0 +1,938 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BBDBCA0F-C937-4863-B1D0-7D8670524D57}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PokemonFightAI</RootNamespace>
+    <AssemblyName>Pokemon Fight AI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>pokeball.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AIControl.cs" />
+    <Compile Include="Attack.cs" />
+    <Compile Include="BattleMechanics.cs" />
+    <Compile Include="BattleScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BattleScene.Designer.cs">
+      <DependentUpon>BattleScene.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataStorage.cs" />
+    <Compile Include="PokeInstance.cs" />
+    <Compile Include="Pokemon.cs" />
+    <Compile Include="PokeType.cs" />
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Status.cs" />
+    <EmbeddedResource Include="BattleScene.resx">
+      <DependentUpon>BattleScene.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sprites\ui\poke_status.png" />
+    <None Include="sprites\ui\poke_fainted.png" />
+    <None Include="sprites\ui\poke_empty.png" />
+    <None Include="sprites\ui\poke_available.png" />
+    <None Include="sprites\trainer\teamrocket.png" />
+    <None Include="sprites\trainer\brendan.png" />
+    <None Include="sprites\ui\pokeball.png" />
+    <None Include="music\BattleIntro.wav" />
+    <None Include="music\BattleLoop.wav" />
+    <Content Include="pokeball.ico" />
+    <None Include="sprites\ui\pokelogo.png" />
+    <None Include="sprites\status\slp.png" />
+    <None Include="sprites\status\psn.png" />
+    <None Include="sprites\status\par.png" />
+    <None Include="sprites\status\frz.png" />
+    <None Include="sprites\status\fnt.png" />
+    <None Include="sprites\status\brn.png" />
+    <None Include="sprites\types\water.png" />
+    <None Include="sprites\types\steel.png" />
+    <None Include="sprites\types\rock.png" />
+    <None Include="sprites\types\psychic.png" />
+    <None Include="sprites\types\poison.png" />
+    <None Include="sprites\types\normal.png" />
+    <None Include="sprites\types\ice.png" />
+    <None Include="sprites\types\ground.png" />
+    <None Include="sprites\types\grass.png" />
+    <None Include="sprites\types\ghost.png" />
+    <None Include="sprites\types\flying.png" />
+    <None Include="sprites\types\fire.png" />
+    <None Include="sprites\types\fight.png" />
+    <None Include="sprites\types\electric.png" />
+    <None Include="sprites\types\dragon.png" />
+    <None Include="sprites\types\dark.png" />
+    <None Include="sprites\types\bug.png" />
+    <None Include="sprites\front\f386.png" />
+    <None Include="sprites\front\f385.png" />
+    <None Include="sprites\front\f384.png" />
+    <None Include="sprites\front\f383.png" />
+    <None Include="sprites\front\f382.png" />
+    <None Include="sprites\front\f381.png" />
+    <None Include="sprites\front\f380.png" />
+    <None Include="sprites\front\f379.png" />
+    <None Include="sprites\front\f378.png" />
+    <None Include="sprites\front\f377.png" />
+    <None Include="sprites\front\f376.png" />
+    <None Include="sprites\front\f375.png" />
+    <None Include="sprites\front\f374.png" />
+    <None Include="sprites\front\f373.png" />
+    <None Include="sprites\front\f372.png" />
+    <None Include="sprites\front\f371.png" />
+    <None Include="sprites\front\f370.png" />
+    <None Include="sprites\front\f369.png" />
+    <None Include="sprites\front\f368.png" />
+    <None Include="sprites\front\f367.png" />
+    <None Include="sprites\front\f366.png" />
+    <None Include="sprites\front\f365.png" />
+    <None Include="sprites\front\f364.png" />
+    <None Include="sprites\front\f363.png" />
+    <None Include="sprites\front\f362.png" />
+    <None Include="sprites\front\f361.png" />
+    <None Include="sprites\front\f360.png" />
+    <None Include="sprites\front\f359.png" />
+    <None Include="sprites\front\f358.png" />
+    <None Include="sprites\front\f357.png" />
+    <None Include="sprites\front\f356.png" />
+    <None Include="sprites\front\f355.png" />
+    <None Include="sprites\front\f354.png" />
+    <None Include="sprites\front\f353.png" />
+    <None Include="sprites\front\f352.png" />
+    <None Include="sprites\front\f351.png" />
+    <None Include="sprites\front\f350.png" />
+    <None Include="sprites\front\f349.png" />
+    <None Include="sprites\front\f348.png" />
+    <None Include="sprites\front\f347.png" />
+    <None Include="sprites\front\f346.png" />
+    <None Include="sprites\front\f345.png" />
+    <None Include="sprites\front\f344.png" />
+    <None Include="sprites\front\f343.png" />
+    <None Include="sprites\front\f342.png" />
+    <None Include="sprites\front\f341.png" />
+    <None Include="sprites\front\f340.png" />
+    <None Include="sprites\front\f339.png" />
+    <None Include="sprites\front\f338.png" />
+    <None Include="sprites\front\f337.png" />
+    <None Include="sprites\front\f336.png" />
+    <None Include="sprites\front\f335.png" />
+    <None Include="sprites\front\f334.png" />
+    <None Include="sprites\front\f333.png" />
+    <None Include="sprites\front\f332.png" />
+    <None Include="sprites\front\f331.png" />
+    <None Include="sprites\front\f330.png" />
+    <None Include="sprites\front\f329.png" />
+    <None Include="sprites\front\f328.png" />
+    <None Include="sprites\front\f327.png" />
+    <None Include="sprites\front\f326.png" />
+    <None Include="sprites\front\f325.png" />
+    <None Include="sprites\front\f324.png" />
+    <None Include="sprites\front\f323.png" />
+    <None Include="sprites\front\f322.png" />
+    <None Include="sprites\front\f321.png" />
+    <None Include="sprites\front\f320.png" />
+    <None Include="sprites\front\f319.png" />
+    <None Include="sprites\front\f318.png" />
+    <None Include="sprites\front\f317.png" />
+    <None Include="sprites\front\f316.png" />
+    <None Include="sprites\front\f315.png" />
+    <None Include="sprites\front\f314.png" />
+    <None Include="sprites\front\f313.png" />
+    <None Include="sprites\front\f312.png" />
+    <None Include="sprites\front\f311.png" />
+    <None Include="sprites\front\f310.png" />
+    <None Include="sprites\front\f309.png" />
+    <None Include="sprites\front\f308.png" />
+    <None Include="sprites\front\f307.png" />
+    <None Include="sprites\front\f306.png" />
+    <None Include="sprites\front\f305.png" />
+    <None Include="sprites\front\f304.png" />
+    <None Include="sprites\front\f303.png" />
+    <None Include="sprites\front\f302.png" />
+    <None Include="sprites\front\f301.png" />
+    <None Include="sprites\front\f300.png" />
+    <None Include="sprites\front\f299.png" />
+    <None Include="sprites\front\f298.png" />
+    <None Include="sprites\front\f297.png" />
+    <None Include="sprites\front\f296.png" />
+    <None Include="sprites\front\f295.png" />
+    <None Include="sprites\front\f294.png" />
+    <None Include="sprites\front\f293.png" />
+    <None Include="sprites\front\f292.png" />
+    <None Include="sprites\front\f291.png" />
+    <None Include="sprites\front\f290.png" />
+    <None Include="sprites\front\f289.png" />
+    <None Include="sprites\front\f288.png" />
+    <None Include="sprites\front\f287.png" />
+    <None Include="sprites\front\f286.png" />
+    <None Include="sprites\front\f285.png" />
+    <None Include="sprites\front\f284.png" />
+    <None Include="sprites\front\f283.png" />
+    <None Include="sprites\front\f282.png" />
+    <None Include="sprites\front\f281.png" />
+    <None Include="sprites\front\f280.png" />
+    <None Include="sprites\front\f279.png" />
+    <None Include="sprites\front\f278.png" />
+    <None Include="sprites\front\f277.png" />
+    <None Include="sprites\front\f276.png" />
+    <None Include="sprites\front\f275.png" />
+    <None Include="sprites\front\f274.png" />
+    <None Include="sprites\front\f273.png" />
+    <None Include="sprites\front\f272.png" />
+    <None Include="sprites\front\f271.png" />
+    <None Include="sprites\front\f270.png" />
+    <None Include="sprites\front\f269.png" />
+    <None Include="sprites\front\f268.png" />
+    <None Include="sprites\front\f267.png" />
+    <None Include="sprites\front\f266.png" />
+    <None Include="sprites\front\f265.png" />
+    <None Include="sprites\front\f264.png" />
+    <None Include="sprites\front\f263.png" />
+    <None Include="sprites\front\f262.png" />
+    <None Include="sprites\front\f261.png" />
+    <None Include="sprites\front\f260.png" />
+    <None Include="sprites\front\f259.png" />
+    <None Include="sprites\front\f258.png" />
+    <None Include="sprites\front\f257.png" />
+    <None Include="sprites\front\f256.png" />
+    <None Include="sprites\front\f255.png" />
+    <None Include="sprites\front\f254.png" />
+    <None Include="sprites\front\f253.png" />
+    <None Include="sprites\front\f252.png" />
+    <None Include="sprites\front\f251.png" />
+    <None Include="sprites\front\f250.png" />
+    <None Include="sprites\front\f249.png" />
+    <None Include="sprites\front\f248.png" />
+    <None Include="sprites\front\f247.png" />
+    <None Include="sprites\front\f246.png" />
+    <None Include="sprites\front\f245.png" />
+    <None Include="sprites\front\f244.png" />
+    <None Include="sprites\front\f243.png" />
+    <None Include="sprites\front\f242.png" />
+    <None Include="sprites\front\f241.png" />
+    <None Include="sprites\front\f240.png" />
+    <None Include="sprites\front\f239.png" />
+    <None Include="sprites\front\f238.png" />
+    <None Include="sprites\front\f237.png" />
+    <None Include="sprites\front\f236.png" />
+    <None Include="sprites\front\f235.png" />
+    <None Include="sprites\front\f234.png" />
+    <None Include="sprites\front\f233.png" />
+    <None Include="sprites\front\f232.png" />
+    <None Include="sprites\front\f231.png" />
+    <None Include="sprites\front\f230.png" />
+    <None Include="sprites\front\f229.png" />
+    <None Include="sprites\front\f228.png" />
+    <None Include="sprites\front\f227.png" />
+    <None Include="sprites\front\f226.png" />
+    <None Include="sprites\front\f225.png" />
+    <None Include="sprites\front\f224.png" />
+    <None Include="sprites\front\f223.png" />
+    <None Include="sprites\front\f222.png" />
+    <None Include="sprites\front\f221.png" />
+    <None Include="sprites\front\f220.png" />
+    <None Include="sprites\front\f219.png" />
+    <None Include="sprites\front\f218.png" />
+    <None Include="sprites\front\f217.png" />
+    <None Include="sprites\front\f216.png" />
+    <None Include="sprites\front\f215.png" />
+    <None Include="sprites\front\f214.png" />
+    <None Include="sprites\front\f213.png" />
+    <None Include="sprites\front\f212.png" />
+    <None Include="sprites\front\f211.png" />
+    <None Include="sprites\front\f210.png" />
+    <None Include="sprites\front\f209.png" />
+    <None Include="sprites\front\f208.png" />
+    <None Include="sprites\front\f207.png" />
+    <None Include="sprites\front\f206.png" />
+    <None Include="sprites\front\f205.png" />
+    <None Include="sprites\front\f204.png" />
+    <None Include="sprites\front\f203.png" />
+    <None Include="sprites\front\f202.png" />
+    <None Include="sprites\front\f201.png" />
+    <None Include="sprites\front\f200.png" />
+    <None Include="sprites\front\f199.png" />
+    <None Include="sprites\front\f198.png" />
+    <None Include="sprites\front\f197.png" />
+    <None Include="sprites\front\f196.png" />
+    <None Include="sprites\front\f195.png" />
+    <None Include="sprites\front\f194.png" />
+    <None Include="sprites\front\f193.png" />
+    <None Include="sprites\front\f192.png" />
+    <None Include="sprites\front\f191.png" />
+    <None Include="sprites\front\f190.png" />
+    <None Include="sprites\front\f189.png" />
+    <None Include="sprites\front\f188.png" />
+    <None Include="sprites\front\f187.png" />
+    <None Include="sprites\front\f186.png" />
+    <None Include="sprites\front\f185.png" />
+    <None Include="sprites\front\f184.png" />
+    <None Include="sprites\front\f183.png" />
+    <None Include="sprites\front\f182.png" />
+    <None Include="sprites\front\f181.png" />
+    <None Include="sprites\front\f180.png" />
+    <None Include="sprites\front\f179.png" />
+    <None Include="sprites\front\f178.png" />
+    <None Include="sprites\front\f177.png" />
+    <None Include="sprites\front\f176.png" />
+    <None Include="sprites\front\f175.png" />
+    <None Include="sprites\front\f174.png" />
+    <None Include="sprites\front\f173.png" />
+    <None Include="sprites\front\f172.png" />
+    <None Include="sprites\front\f171.png" />
+    <None Include="sprites\front\f170.png" />
+    <None Include="sprites\front\f169.png" />
+    <None Include="sprites\front\f168.png" />
+    <None Include="sprites\front\f167.png" />
+    <None Include="sprites\front\f166.png" />
+    <None Include="sprites\front\f165.png" />
+    <None Include="sprites\front\f164.png" />
+    <None Include="sprites\front\f163.png" />
+    <None Include="sprites\front\f162.png" />
+    <None Include="sprites\front\f161.png" />
+    <None Include="sprites\front\f160.png" />
+    <None Include="sprites\front\f159.png" />
+    <None Include="sprites\front\f158.png" />
+    <None Include="sprites\front\f157.png" />
+    <None Include="sprites\front\f156.png" />
+    <None Include="sprites\front\f155.png" />
+    <None Include="sprites\front\f154.png" />
+    <None Include="sprites\front\f153.png" />
+    <None Include="sprites\front\f152.png" />
+    <None Include="sprites\front\f151.png" />
+    <None Include="sprites\front\f150.png" />
+    <None Include="sprites\front\f149.png" />
+    <None Include="sprites\front\f148.png" />
+    <None Include="sprites\front\f147.png" />
+    <None Include="sprites\front\f146.png" />
+    <None Include="sprites\front\f145.png" />
+    <None Include="sprites\front\f144.png" />
+    <None Include="sprites\front\f143.png" />
+    <None Include="sprites\front\f142.png" />
+    <None Include="sprites\front\f141.png" />
+    <None Include="sprites\front\f140.png" />
+    <None Include="sprites\front\f139.png" />
+    <None Include="sprites\front\f138.png" />
+    <None Include="sprites\front\f137.png" />
+    <None Include="sprites\front\f136.png" />
+    <None Include="sprites\front\f135.png" />
+    <None Include="sprites\front\f134.png" />
+    <None Include="sprites\front\f133.png" />
+    <None Include="sprites\front\f132.png" />
+    <None Include="sprites\front\f131.png" />
+    <None Include="sprites\front\f130.png" />
+    <None Include="sprites\front\f129.png" />
+    <None Include="sprites\front\f128.png" />
+    <None Include="sprites\front\f127.png" />
+    <None Include="sprites\front\f126.png" />
+    <None Include="sprites\front\f125.png" />
+    <None Include="sprites\front\f124.png" />
+    <None Include="sprites\front\f123.png" />
+    <None Include="sprites\front\f122.png" />
+    <None Include="sprites\front\f121.png" />
+    <None Include="sprites\front\f120.png" />
+    <None Include="sprites\front\f119.png" />
+    <None Include="sprites\front\f118.png" />
+    <None Include="sprites\front\f117.png" />
+    <None Include="sprites\front\f116.png" />
+    <None Include="sprites\front\f115.png" />
+    <None Include="sprites\front\f114.png" />
+    <None Include="sprites\front\f113.png" />
+    <None Include="sprites\front\f112.png" />
+    <None Include="sprites\front\f111.png" />
+    <None Include="sprites\front\f110.png" />
+    <None Include="sprites\front\f109.png" />
+    <None Include="sprites\front\f108.png" />
+    <None Include="sprites\front\f107.png" />
+    <None Include="sprites\front\f106.png" />
+    <None Include="sprites\front\f105.png" />
+    <None Include="sprites\front\f104.png" />
+    <None Include="sprites\front\f103.png" />
+    <None Include="sprites\front\f102.png" />
+    <None Include="sprites\front\f101.png" />
+    <None Include="sprites\front\f100.png" />
+    <None Include="sprites\front\f99.png" />
+    <None Include="sprites\front\f98.png" />
+    <None Include="sprites\front\f97.png" />
+    <None Include="sprites\front\f96.png" />
+    <None Include="sprites\front\f95.png" />
+    <None Include="sprites\front\f94.png" />
+    <None Include="sprites\front\f93.png" />
+    <None Include="sprites\front\f92.png" />
+    <None Include="sprites\front\f91.png" />
+    <None Include="sprites\front\f90.png" />
+    <None Include="sprites\front\f89.png" />
+    <None Include="sprites\front\f88.png" />
+    <None Include="sprites\front\f87.png" />
+    <None Include="sprites\front\f86.png" />
+    <None Include="sprites\front\f85.png" />
+    <None Include="sprites\front\f84.png" />
+    <None Include="sprites\front\f83.png" />
+    <None Include="sprites\front\f82.png" />
+    <None Include="sprites\front\f81.png" />
+    <None Include="sprites\front\f80.png" />
+    <None Include="sprites\front\f79.png" />
+    <None Include="sprites\front\f78.png" />
+    <None Include="sprites\front\f77.png" />
+    <None Include="sprites\front\f76.png" />
+    <None Include="sprites\front\f75.png" />
+    <None Include="sprites\front\f74.png" />
+    <None Include="sprites\front\f73.png" />
+    <None Include="sprites\front\f72.png" />
+    <None Include="sprites\front\f71.png" />
+    <None Include="sprites\front\f70.png" />
+    <None Include="sprites\front\f69.png" />
+    <None Include="sprites\front\f68.png" />
+    <None Include="sprites\front\f67.png" />
+    <None Include="sprites\front\f66.png" />
+    <None Include="sprites\front\f65.png" />
+    <None Include="sprites\front\f64.png" />
+    <None Include="sprites\front\f63.png" />
+    <None Include="sprites\front\f62.png" />
+    <None Include="sprites\front\f61.png" />
+    <None Include="sprites\front\f60.png" />
+    <None Include="sprites\front\f59.png" />
+    <None Include="sprites\front\f58.png" />
+    <None Include="sprites\front\f57.png" />
+    <None Include="sprites\front\f56.png" />
+    <None Include="sprites\front\f55.png" />
+    <None Include="sprites\front\f54.png" />
+    <None Include="sprites\front\f53.png" />
+    <None Include="sprites\front\f52.png" />
+    <None Include="sprites\front\f51.png" />
+    <None Include="sprites\front\f50.png" />
+    <None Include="sprites\front\f49.png" />
+    <None Include="sprites\front\f48.png" />
+    <None Include="sprites\front\f47.png" />
+    <None Include="sprites\front\f46.png" />
+    <None Include="sprites\front\f45.png" />
+    <None Include="sprites\front\f44.png" />
+    <None Include="sprites\front\f43.png" />
+    <None Include="sprites\front\f42.png" />
+    <None Include="sprites\front\f41.png" />
+    <None Include="sprites\front\f40.png" />
+    <None Include="sprites\front\f39.png" />
+    <None Include="sprites\front\f38.png" />
+    <None Include="sprites\front\f37.png" />
+    <None Include="sprites\front\f36.png" />
+    <None Include="sprites\front\f35.png" />
+    <None Include="sprites\front\f34.png" />
+    <None Include="sprites\front\f33.png" />
+    <None Include="sprites\front\f32.png" />
+    <None Include="sprites\front\f31.png" />
+    <None Include="sprites\front\f30.png" />
+    <None Include="sprites\front\f29.png" />
+    <None Include="sprites\front\f28.png" />
+    <None Include="sprites\front\f27.png" />
+    <None Include="sprites\front\f26.png" />
+    <None Include="sprites\front\f25.png" />
+    <None Include="sprites\front\f24.png" />
+    <None Include="sprites\front\f23.png" />
+    <None Include="sprites\front\f22.png" />
+    <None Include="sprites\front\f21.png" />
+    <None Include="sprites\front\f20.png" />
+    <None Include="sprites\front\f19.png" />
+    <None Include="sprites\front\f18.png" />
+    <None Include="sprites\front\f17.png" />
+    <None Include="sprites\front\f16.png" />
+    <None Include="sprites\front\f15.png" />
+    <None Include="sprites\front\f14.png" />
+    <None Include="sprites\front\f13.png" />
+    <None Include="sprites\front\f12.png" />
+    <None Include="sprites\front\f11.png" />
+    <None Include="sprites\front\f10.png" />
+    <None Include="sprites\front\f9.png" />
+    <None Include="sprites\front\f8.png" />
+    <None Include="sprites\front\f7.png" />
+    <None Include="sprites\front\f6.png" />
+    <None Include="sprites\front\f5.png" />
+    <None Include="sprites\front\f4.png" />
+    <None Include="sprites\front\f3.png" />
+    <None Include="sprites\front\f2.png" />
+    <None Include="sprites\front\f1.png" />
+    <None Include="sprites\back\b386.png" />
+    <None Include="sprites\back\b385.png" />
+    <None Include="sprites\back\b384.png" />
+    <None Include="sprites\back\b383.png" />
+    <None Include="sprites\back\b382.png" />
+    <None Include="sprites\back\b381.png" />
+    <None Include="sprites\back\b380.png" />
+    <None Include="sprites\back\b379.png" />
+    <None Include="sprites\back\b378.png" />
+    <None Include="sprites\back\b377.png" />
+    <None Include="sprites\back\b376.png" />
+    <None Include="sprites\back\b375.png" />
+    <None Include="sprites\back\b374.png" />
+    <None Include="sprites\back\b373.png" />
+    <None Include="sprites\back\b372.png" />
+    <None Include="sprites\back\b371.png" />
+    <None Include="sprites\back\b370.png" />
+    <None Include="sprites\back\b369.png" />
+    <None Include="sprites\back\b368.png" />
+    <None Include="sprites\back\b367.png" />
+    <None Include="sprites\back\b366.png" />
+    <None Include="sprites\back\b365.png" />
+    <None Include="sprites\back\b364.png" />
+    <None Include="sprites\back\b363.png" />
+    <None Include="sprites\back\b362.png" />
+    <None Include="sprites\back\b361.png" />
+    <None Include="sprites\back\b360.png" />
+    <None Include="sprites\back\b359.png" />
+    <None Include="sprites\back\b358.png" />
+    <None Include="sprites\back\b357.png" />
+    <None Include="sprites\back\b356.png" />
+    <None Include="sprites\back\b355.png" />
+    <None Include="sprites\back\b354.png" />
+    <None Include="sprites\back\b353.png" />
+    <None Include="sprites\back\b352.png" />
+    <None Include="sprites\back\b351.png" />
+    <None Include="sprites\back\b350.png" />
+    <None Include="sprites\back\b349.png" />
+    <None Include="sprites\back\b348.png" />
+    <None Include="sprites\back\b347.png" />
+    <None Include="sprites\back\b346.png" />
+    <None Include="sprites\back\b345.png" />
+    <None Include="sprites\back\b344.png" />
+    <None Include="sprites\back\b343.png" />
+    <None Include="sprites\back\b342.png" />
+    <None Include="sprites\back\b341.png" />
+    <None Include="sprites\back\b340.png" />
+    <None Include="sprites\back\b339.png" />
+    <None Include="sprites\back\b338.png" />
+    <None Include="sprites\back\b337.png" />
+    <None Include="sprites\back\b336.png" />
+    <None Include="sprites\back\b335.png" />
+    <None Include="sprites\back\b334.png" />
+    <None Include="sprites\back\b333.png" />
+    <None Include="sprites\back\b332.png" />
+    <None Include="sprites\back\b331.png" />
+    <None Include="sprites\back\b330.png" />
+    <None Include="sprites\back\b329.png" />
+    <None Include="sprites\back\b328.png" />
+    <None Include="sprites\back\b327.png" />
+    <None Include="sprites\back\b326.png" />
+    <None Include="sprites\back\b325.png" />
+    <None Include="sprites\back\b324.png" />
+    <None Include="sprites\back\b323.png" />
+    <None Include="sprites\back\b322.png" />
+    <None Include="sprites\back\b321.png" />
+    <None Include="sprites\back\b320.png" />
+    <None Include="sprites\back\b319.png" />
+    <None Include="sprites\back\b318.png" />
+    <None Include="sprites\back\b317.png" />
+    <None Include="sprites\back\b316.png" />
+    <None Include="sprites\back\b315.png" />
+    <None Include="sprites\back\b314.png" />
+    <None Include="sprites\back\b313.png" />
+    <None Include="sprites\back\b312.png" />
+    <None Include="sprites\back\b311.png" />
+    <None Include="sprites\back\b310.png" />
+    <None Include="sprites\back\b309.png" />
+    <None Include="sprites\back\b308.png" />
+    <None Include="sprites\back\b307.png" />
+    <None Include="sprites\back\b306.png" />
+    <None Include="sprites\back\b305.png" />
+    <None Include="sprites\back\b304.png" />
+    <None Include="sprites\back\b303.png" />
+    <None Include="sprites\back\b302.png" />
+    <None Include="sprites\back\b301.png" />
+    <None Include="sprites\back\b300.png" />
+    <None Include="sprites\back\b299.png" />
+    <None Include="sprites\back\b298.png" />
+    <None Include="sprites\back\b297.png" />
+    <None Include="sprites\back\b296.png" />
+    <None Include="sprites\back\b295.png" />
+    <None Include="sprites\back\b294.png" />
+    <None Include="sprites\back\b293.png" />
+    <None Include="sprites\back\b292.png" />
+    <None Include="sprites\back\b291.png" />
+    <None Include="sprites\back\b290.png" />
+    <None Include="sprites\back\b289.png" />
+    <None Include="sprites\back\b288.png" />
+    <None Include="sprites\back\b287.png" />
+    <None Include="sprites\back\b286.png" />
+    <None Include="sprites\back\b285.png" />
+    <None Include="sprites\back\b284.png" />
+    <None Include="sprites\back\b283.png" />
+    <None Include="sprites\back\b282.png" />
+    <None Include="sprites\back\b281.png" />
+    <None Include="sprites\back\b280.png" />
+    <None Include="sprites\back\b279.png" />
+    <None Include="sprites\back\b278.png" />
+    <None Include="sprites\back\b277.png" />
+    <None Include="sprites\back\b276.png" />
+    <None Include="sprites\back\b275.png" />
+    <None Include="sprites\back\b274.png" />
+    <None Include="sprites\back\b273.png" />
+    <None Include="sprites\back\b272.png" />
+    <None Include="sprites\back\b271.png" />
+    <None Include="sprites\back\b270.png" />
+    <None Include="sprites\back\b269.png" />
+    <None Include="sprites\back\b268.png" />
+    <None Include="sprites\back\b267.png" />
+    <None Include="sprites\back\b266.png" />
+    <None Include="sprites\back\b265.png" />
+    <None Include="sprites\back\b264.png" />
+    <None Include="sprites\back\b263.png" />
+    <None Include="sprites\back\b262.png" />
+    <None Include="sprites\back\b261.png" />
+    <None Include="sprites\back\b260.png" />
+    <None Include="sprites\back\b259.png" />
+    <None Include="sprites\back\b258.png" />
+    <None Include="sprites\back\b257.png" />
+    <None Include="sprites\back\b256.png" />
+    <None Include="sprites\back\b255.png" />
+    <None Include="sprites\back\b254.png" />
+    <None Include="sprites\back\b253.png" />
+    <None Include="sprites\back\b252.png" />
+    <None Include="sprites\back\b251.png" />
+    <None Include="sprites\back\b250.png" />
+    <None Include="sprites\back\b249.png" />
+    <None Include="sprites\back\b248.png" />
+    <None Include="sprites\back\b247.png" />
+    <None Include="sprites\back\b246.png" />
+    <None Include="sprites\back\b245.png" />
+    <None Include="sprites\back\b244.png" />
+    <None Include="sprites\back\b243.png" />
+    <None Include="sprites\back\b242.png" />
+    <None Include="sprites\back\b241.png" />
+    <None Include="sprites\back\b240.png" />
+    <None Include="sprites\back\b239.png" />
+    <None Include="sprites\back\b238.png" />
+    <None Include="sprites\back\b237.png" />
+    <None Include="sprites\back\b236.png" />
+    <None Include="sprites\back\b235.png" />
+    <None Include="sprites\back\b234.png" />
+    <None Include="sprites\back\b233.png" />
+    <None Include="sprites\back\b232.png" />
+    <None Include="sprites\back\b231.png" />
+    <None Include="sprites\back\b230.png" />
+    <None Include="sprites\back\b229.png" />
+    <None Include="sprites\back\b228.png" />
+    <None Include="sprites\back\b227.png" />
+    <None Include="sprites\back\b226.png" />
+    <None Include="sprites\back\b225.png" />
+    <None Include="sprites\back\b224.png" />
+    <None Include="sprites\back\b223.png" />
+    <None Include="sprites\back\b222.png" />
+    <None Include="sprites\back\b221.png" />
+    <None Include="sprites\back\b220.png" />
+    <None Include="sprites\back\b219.png" />
+    <None Include="sprites\back\b218.png" />
+    <None Include="sprites\back\b217.png" />
+    <None Include="sprites\back\b216.png" />
+    <None Include="sprites\back\b215.png" />
+    <None Include="sprites\back\b214.png" />
+    <None Include="sprites\back\b213.png" />
+    <None Include="sprites\back\b212.png" />
+    <None Include="sprites\back\b211.png" />
+    <None Include="sprites\back\b210.png" />
+    <None Include="sprites\back\b209.png" />
+    <None Include="sprites\back\b208.png" />
+    <None Include="sprites\back\b207.png" />
+    <None Include="sprites\back\b206.png" />
+    <None Include="sprites\back\b205.png" />
+    <None Include="sprites\back\b204.png" />
+    <None Include="sprites\back\b203.png" />
+    <None Include="sprites\back\b202.png" />
+    <None Include="sprites\back\b201.png" />
+    <None Include="sprites\back\b200.png" />
+    <None Include="sprites\back\b199.png" />
+    <None Include="sprites\back\b198.png" />
+    <None Include="sprites\back\b197.png" />
+    <None Include="sprites\back\b196.png" />
+    <None Include="sprites\back\b195.png" />
+    <None Include="sprites\back\b194.png" />
+    <None Include="sprites\back\b193.png" />
+    <None Include="sprites\back\b192.png" />
+    <None Include="sprites\back\b191.png" />
+    <None Include="sprites\back\b190.png" />
+    <None Include="sprites\back\b189.png" />
+    <None Include="sprites\back\b188.png" />
+    <None Include="sprites\back\b187.png" />
+    <None Include="sprites\back\b186.png" />
+    <None Include="sprites\back\b185.png" />
+    <None Include="sprites\back\b184.png" />
+    <None Include="sprites\back\b183.png" />
+    <None Include="sprites\back\b182.png" />
+    <None Include="sprites\back\b181.png" />
+    <None Include="sprites\back\b180.png" />
+    <None Include="sprites\back\b179.png" />
+    <None Include="sprites\back\b178.png" />
+    <None Include="sprites\back\b177.png" />
+    <None Include="sprites\back\b176.png" />
+    <None Include="sprites\back\b175.png" />
+    <None Include="sprites\back\b174.png" />
+    <None Include="sprites\back\b173.png" />
+    <None Include="sprites\back\b172.png" />
+    <None Include="sprites\back\b171.png" />
+    <None Include="sprites\back\b170.png" />
+    <None Include="sprites\back\b169.png" />
+    <None Include="sprites\back\b168.png" />
+    <None Include="sprites\back\b167.png" />
+    <None Include="sprites\back\b166.png" />
+    <None Include="sprites\back\b165.png" />
+    <None Include="sprites\back\b164.png" />
+    <None Include="sprites\back\b163.png" />
+    <None Include="sprites\back\b162.png" />
+    <None Include="sprites\back\b161.png" />
+    <None Include="sprites\back\b160.png" />
+    <None Include="sprites\back\b159.png" />
+    <None Include="sprites\back\b158.png" />
+    <None Include="sprites\back\b157.png" />
+    <None Include="sprites\back\b156.png" />
+    <None Include="sprites\back\b155.png" />
+    <None Include="sprites\back\b154.png" />
+    <None Include="sprites\back\b153.png" />
+    <None Include="sprites\back\b152.png" />
+    <None Include="sprites\back\b151.png" />
+    <None Include="sprites\back\b150.png" />
+    <None Include="sprites\back\b149.png" />
+    <None Include="sprites\back\b148.png" />
+    <None Include="sprites\back\b147.png" />
+    <None Include="sprites\back\b146.png" />
+    <None Include="sprites\back\b145.png" />
+    <None Include="sprites\back\b144.png" />
+    <None Include="sprites\back\b143.png" />
+    <None Include="sprites\back\b142.png" />
+    <None Include="sprites\back\b141.png" />
+    <None Include="sprites\back\b140.png" />
+    <None Include="sprites\back\b139.png" />
+    <None Include="sprites\back\b138.png" />
+    <None Include="sprites\back\b137.png" />
+    <None Include="sprites\back\b136.png" />
+    <None Include="sprites\back\b135.png" />
+    <None Include="sprites\back\b134.png" />
+    <None Include="sprites\back\b133.png" />
+    <None Include="sprites\back\b132.png" />
+    <None Include="sprites\back\b131.png" />
+    <None Include="sprites\back\b130.png" />
+    <None Include="sprites\back\b129.png" />
+    <None Include="sprites\back\b128.png" />
+    <None Include="sprites\back\b127.png" />
+    <None Include="sprites\back\b126.png" />
+    <None Include="sprites\back\b125.png" />
+    <None Include="sprites\back\b124.png" />
+    <None Include="sprites\back\b123.png" />
+    <None Include="sprites\back\b122.png" />
+    <None Include="sprites\back\b121.png" />
+    <None Include="sprites\back\b120.png" />
+    <None Include="sprites\back\b119.png" />
+    <None Include="sprites\back\b118.png" />
+    <None Include="sprites\back\b117.png" />
+    <None Include="sprites\back\b116.png" />
+    <None Include="sprites\back\b115.png" />
+    <None Include="sprites\back\b114.png" />
+    <None Include="sprites\back\b113.png" />
+    <None Include="sprites\back\b112.png" />
+    <None Include="sprites\back\b111.png" />
+    <None Include="sprites\back\b110.png" />
+    <None Include="sprites\back\b109.png" />
+    <None Include="sprites\back\b108.png" />
+    <None Include="sprites\back\b107.png" />
+    <None Include="sprites\back\b106.png" />
+    <None Include="sprites\back\b105.png" />
+    <None Include="sprites\back\b104.png" />
+    <None Include="sprites\back\b103.png" />
+    <None Include="sprites\back\b102.png" />
+    <None Include="sprites\back\b101.png" />
+    <None Include="sprites\back\b100.png" />
+    <None Include="sprites\back\b99.png" />
+    <None Include="sprites\back\b98.png" />
+    <None Include="sprites\back\b97.png" />
+    <None Include="sprites\back\b96.png" />
+    <None Include="sprites\back\b95.png" />
+    <None Include="sprites\back\b94.png" />
+    <None Include="sprites\back\b93.png" />
+    <None Include="sprites\back\b92.png" />
+    <None Include="sprites\back\b91.png" />
+    <None Include="sprites\back\b90.png" />
+    <None Include="sprites\back\b89.png" />
+    <None Include="sprites\back\b88.png" />
+    <None Include="sprites\back\b87.png" />
+    <None Include="sprites\back\b86.png" />
+    <None Include="sprites\back\b85.png" />
+    <None Include="sprites\back\b84.png" />
+    <None Include="sprites\back\b83.png" />
+    <None Include="sprites\back\b82.png" />
+    <None Include="sprites\back\b81.png" />
+    <None Include="sprites\back\b80.png" />
+    <None Include="sprites\back\b79.png" />
+    <None Include="sprites\back\b78.png" />
+    <None Include="sprites\back\b77.png" />
+    <None Include="sprites\back\b76.png" />
+    <None Include="sprites\back\b75.png" />
+    <None Include="sprites\back\b74.png" />
+    <None Include="sprites\back\b73.png" />
+    <None Include="sprites\back\b72.png" />
+    <None Include="sprites\back\b71.png" />
+    <None Include="sprites\back\b70.png" />
+    <None Include="sprites\back\b69.png" />
+    <None Include="sprites\back\b68.png" />
+    <None Include="sprites\back\b67.png" />
+    <None Include="sprites\back\b66.png" />
+    <None Include="sprites\back\b65.png" />
+    <None Include="sprites\back\b64.png" />
+    <None Include="sprites\back\b63.png" />
+    <None Include="sprites\back\b62.png" />
+    <None Include="sprites\back\b61.png" />
+    <None Include="sprites\back\b60.png" />
+    <None Include="sprites\back\b59.png" />
+    <None Include="sprites\back\b58.png" />
+    <None Include="sprites\back\b57.png" />
+    <None Include="sprites\back\b56.png" />
+    <None Include="sprites\back\b55.png" />
+    <None Include="sprites\back\b54.png" />
+    <None Include="sprites\back\b53.png" />
+    <None Include="sprites\back\b52.png" />
+    <None Include="sprites\back\b51.png" />
+    <None Include="sprites\back\b50.png" />
+    <None Include="sprites\back\b49.png" />
+    <None Include="sprites\back\b48.png" />
+    <None Include="sprites\back\b47.png" />
+    <None Include="sprites\back\b46.png" />
+    <None Include="sprites\back\b45.png" />
+    <None Include="sprites\back\b44.png" />
+    <None Include="sprites\back\b43.png" />
+    <None Include="sprites\back\b42.png" />
+    <None Include="sprites\back\b41.png" />
+    <None Include="sprites\back\b40.png" />
+    <None Include="sprites\back\b39.png" />
+    <None Include="sprites\back\b38.png" />
+    <None Include="sprites\back\b37.png" />
+    <None Include="sprites\back\b36.png" />
+    <None Include="sprites\back\b35.png" />
+    <None Include="sprites\back\b34.png" />
+    <None Include="sprites\back\b33.png" />
+    <None Include="sprites\back\b32.png" />
+    <None Include="sprites\back\b31.png" />
+    <None Include="sprites\back\b30.png" />
+    <None Include="sprites\back\b29.png" />
+    <None Include="sprites\back\b28.png" />
+    <None Include="sprites\back\b27.png" />
+    <None Include="sprites\back\b26.png" />
+    <None Include="sprites\back\b25.png" />
+    <None Include="sprites\back\b24.png" />
+    <None Include="sprites\back\b23.png" />
+    <None Include="sprites\back\b22.png" />
+    <None Include="sprites\back\b21.png" />
+    <None Include="sprites\back\b20.png" />
+    <None Include="sprites\back\b19.png" />
+    <None Include="sprites\back\b18.png" />
+    <None Include="sprites\back\b17.png" />
+    <None Include="sprites\back\b16.png" />
+    <None Include="sprites\back\b15.png" />
+    <None Include="sprites\back\b14.png" />
+    <None Include="sprites\back\b13.png" />
+    <None Include="sprites\back\b12.png" />
+    <None Include="sprites\back\b11.png" />
+    <None Include="sprites\back\b10.png" />
+    <None Include="sprites\back\b9.png" />
+    <None Include="sprites\back\b8.png" />
+    <None Include="sprites\back\b7.png" />
+    <None Include="sprites\back\b6.png" />
+    <None Include="sprites\back\b5.png" />
+    <None Include="sprites\back\b4.png" />
+    <None Include="sprites\back\b3.png" />
+    <None Include="sprites\back\b2.png" />
+    <None Include="sprites\back\b1.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
